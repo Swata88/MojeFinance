@@ -121,7 +121,7 @@ fun FinanceUI(db:JSONObject,save:()->Unit){
                         Text("${filtered.size} položek · ${money(filtered.sumOf{it.num("amount")})}",Modifier.padding(horizontal=16.dp),color=teal)
                         LazyColumn(contentPadding=PaddingValues(12.dp),verticalArrangement=Arrangement.spacedBy(6.dp)){items(filtered.asReversed().take(700)){t->Card(Modifier.fillMaxWidth(),colors=CardDefaults.cardColors(containerColor=Color.White)){Row(Modifier.padding(12.dp),verticalAlignment=Alignment.CenterVertically){Column(Modifier.weight(1f)){Text(t.s("c3").ifBlank{t.s("c2")},fontWeight=FontWeight.SemiBold);Text("${t.s("date")} · ${t.s("c1")} / ${t.s("c2")}",style=MaterialTheme.typography.bodySmall)};Text(money(t.num("amount")),color=if(t.s("kind")=="P")teal else red)}}}}
                         }
-                    }}
+                    }
                     2->{val groups=filtered.groupBy{it.s("date").take(7)}.toSortedMap();val max=groups.values.maxOfOrNull{it.sumOf{r->r.num("amount")}}?:1.0
                         LazyColumn(contentPadding=PaddingValues(16.dp),verticalArrangement=Arrangement.spacedBy(9.dp)){
                             item{Text("Vývoj po měsících",style=MaterialTheme.typography.titleLarge,fontWeight=FontWeight.Bold)}
