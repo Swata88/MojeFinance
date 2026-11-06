@@ -137,7 +137,7 @@ fun FinanceUI(db:JSONObject,save:()->Unit){
                                     Row(verticalAlignment=Alignment.CenterVertically){Text(cat,Modifier.weight(1f),fontWeight=FontWeight.Bold);Text(money(records.sumOf{it.num("amount")}),color=teal);Icon(if(expanded==cat)Icons.Default.ExpandLess else Icons.Default.ExpandMore,null)}
                                     if(expanded==cat){HorizontalDivider(Modifier.padding(vertical=8.dp));records.forEach{r->Row(Modifier.fillMaxWidth().padding(vertical=5.dp)){Text(r.s("product"),Modifier.weight(1f));Text(money(r.num("amount")))}}}
                                 }
-                            }}}
+                            }}
                         }
                     }
                     4->{LazyColumn(contentPadding=PaddingValues(16.dp),verticalArrangement=Arrangement.spacedBy(9.dp)){
